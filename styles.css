@@ -43,6 +43,7 @@ body {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -435,13 +436,17 @@ h1, h2, h3 {
 
 .card-media img {
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 18%;
 }
 
 .card-media.pin-ratio img {
+  width: 100%;
+  height: auto;
   aspect-ratio: 2 / 3;
+  object-fit: cover;
   object-position: center center;
 }
 
