@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>my charm — Curated Style, Accessories, Nail Art &amp; Gift Ideas</title>
-  <meta name="description" content="my charm curates effortless aesthetic style, accessories, trendy nail art inspiration, and thoughtful gift ideas." />
+  <meta name="p:domain_verify" content="ea6ded0799d703c27386ede0f5d83424"/>
+  <title>my charm — Women's Skincare, K-Beauty &amp; Everyday Gold Jewelry</title>
+  <meta name="description" content="my charm is a women's skincare and minimalist jewelry editorial guide featuring glass-skin routines, everyday tarnish-free gold jewelry, and aesthetic beauty picks." />
   <style>
     :root {
-      --bg: #FAF7F4;
+      --bg: #FCF8F5;
       --surface: #FFFFFF;
-      --ink: #1C1917;
-      --muted: #665E58;
-      --accent: #B84A58;
-      --accent-dark: #943643;
-      --border: #EAE2DA;
+      --ink: #1F1A18;
+      --muted: #6C605B;
+      --accent: #B85A6A;
+      --accent-dark: #933E4D;
+      --gold: #C69B5C;
+      --border: #EFE5DE;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -25,7 +27,7 @@
     header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 1.25rem 2rem;
+      padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -35,7 +37,7 @@
     }
     .brand {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       color: var(--ink);
@@ -43,10 +45,10 @@
     }
     .brand span { color: var(--accent); }
     nav a {
-      margin-left: 1.5rem;
+      margin-left: 1.4rem;
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       font-weight: 500;
     }
     nav a:hover { color: var(--accent); }
@@ -58,33 +60,33 @@
     }
     .pill {
       display: inline-block;
-      background: #F4E4E6;
+      background: #F6E6E8;
       color: var(--accent-dark);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 0.35rem 0.9rem;
+      padding: 0.38rem 1rem;
       border-radius: 999px;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.2rem;
     }
     h1 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.1rem, 4.5vw, 3.25rem);
+      font-size: clamp(2.1rem, 4.6vw, 3.35rem);
       line-height: 1.18;
-      margin-bottom: 1.15rem;
+      margin-bottom: 1.1rem;
       font-weight: 600;
     }
     .hero p {
       color: var(--muted);
-      max-width: 640px;
+      max-width: 660px;
       margin: 0 auto 2rem;
-      font-size: 1.08rem;
+      font-size: 1.07rem;
     }
     .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .btn {
       display: inline-block;
-      padding: 0.85rem 1.7rem;
+      padding: 0.85rem 1.75rem;
       border-radius: 999px;
       font-weight: 600;
       text-decoration: none;
@@ -93,6 +95,8 @@
     }
     .btn-primary { background: var(--accent); color: #fff; }
     .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .btn-gold { background: var(--gold); color: #fff; }
+    .btn-gold:hover { opacity: 0.92; transform: translateY(-1px); }
     .btn-outline { border: 1px solid var(--border); background: var(--surface); color: var(--ink); }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -103,26 +107,29 @@
     }
     .section-title {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.75rem;
+      font-size: 1.8rem;
       margin-bottom: 1.5rem;
       text-align: center;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.3rem;
     }
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem 1.5rem;
+      border-radius: 18px;
+      padding: 1.8rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .card-tag {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       color: var(--accent);
       margin-bottom: 0.5rem;
     }
@@ -131,7 +138,14 @@
       font-size: 1.25rem;
       margin-bottom: 0.6rem;
     }
-    .card p { color: var(--muted); font-size: 0.94rem; }
+    .card p { color: var(--muted); font-size: 0.94rem; margin-bottom: 1.1rem; }
+    .card-link {
+      color: var(--accent-dark);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+    .card-link:hover { text-decoration: underline; }
 
     .studio-box {
       background: var(--surface);
@@ -165,8 +179,8 @@
   <header>
     <a class="brand" href="./index.html">my <span>charm</span></a>
     <nav>
-      <a href="#collections">Collections</a>
-      <a href="#about">About Studio</a>
+      <a href="./skincare.html">Skincare Edits</a>
+      <a href="./jewelry.html">Jewelry Edits</a>
       <a href="./disclosure.html">Affiliate Disclosure</a>
       <a href="./privacy-policy.html">Privacy Policy</a>
     </nav>
@@ -174,40 +188,53 @@
 
   <main>
     <section class="hero">
-      <div class="pill">Curated Editorial &amp; Lifestyle Inspiration</div>
-      <h1>Effortless Style, Aesthetic Nail Art &amp; Everyday Accessories</h1>
+      <div class="pill">Women's Skincare &amp; Everyday Fine Jewelry</div>
+      <h1>Radiant Glass Skin &amp; Timeless Everyday Jewelry</h1>
       <p>
-        Welcome to <strong>my charm</strong> — a curated style journal and visual lookbook sharing timeless accessories,
-        minimalist fashion edits, trendy aesthetic nail art inspiration, and thoughtful gift guides.
+        Welcome to <strong>my charm</strong> — a women's beauty and style journal curating dermatologist-loved
+        skincare routines, K-Beauty glow essentials, waterproof 18k gold-plated jewelry, and chic feminine gift edits.
       </p>
       <div class="cta-group">
-        <a class="btn btn-primary" href="https://www.pinterest.com/hamdamaqbool367/" target="_blank" rel="noopener">Explore on Pinterest</a>
-        <a class="btn btn-outline" href="#collections">Browse Curated Categories</a>
+        <a class="btn btn-primary" href="./skincare.html">Shop Skincare Edits</a>
+        <a class="btn btn-gold" href="./jewelry.html">Shop Jewelry Edits</a>
+        <a class="btn btn-outline" href="https://www.pinterest.com/hamdamaqbool367/" target="_blank" rel="noopener">Follow on Pinterest</a>
       </div>
     </section>
 
-    <section id="collections" class="section">
-      <h2 class="section-title">Featured Curated Collections</h2>
+    <section class="section">
+      <h2 class="section-title">Curated Women's Collections</h2>
       <div class="grid">
         <article class="card">
-          <div class="card-tag">Lookbook</div>
-          <h3>Style &amp; Outfit Edits</h3>
-          <p>Seasonal wardrobe staples, neutral layering guides, and elevated everyday outfits curated for effortless dressing.</p>
+          <div>
+            <div class="card-tag">Skincare &middot; K-Beauty</div>
+            <h3>Glass-Skin Glow Routines</h3>
+            <p>Hydrating snail mucin essences, niacinamide brightening serums, barrier-repair creams, and dewy SPFs for radiant daily skin.</p>
+          </div>
+          <a class="card-link" href="./skincare.html">View Skincare Guide &rarr;</a>
         </article>
         <article class="card">
-          <div class="card-tag">Details</div>
-          <h3>Accessories &amp; Jewelry</h3>
-          <p>Minimalist gold pieces, structured handbags, hair clips, and statement accents that complete any look.</p>
+          <div>
+            <div class="card-tag">Jewelry &middot; Everyday Gold</div>
+            <h3>Tarnish-Free Gold Jewelry</h3>
+            <p>Dainty layered herringbone necklaces, chunky gold hoop earrings, stackable rings, and pearl bracelets built for everyday wear.</p>
+          </div>
+          <a class="card-link" href="./jewelry.html">View Jewelry Guide &rarr;</a>
         </article>
         <article class="card">
-          <div class="card-tag">Beauty</div>
-          <h3>Aesthetic Nail Art Inspo</h3>
-          <p>Trending chrome finishes, soft pastel manicures, clean-girl sheer sets, and seasonal nail design inspiration.</p>
+          <div>
+            <div class="card-tag">Self-Care Tools</div>
+            <h3>Beauty &amp; Gua Sha Rituals</h3>
+            <p>Rose quartz facial rollers, cooling ice globes, silk pillowcases, and LED skincare tools for an at-home spa glow.</p>
+          </div>
+          <a class="card-link" href="./skincare.html#tools">Explore Beauty Tools &rarr;</a>
         </article>
         <article class="card">
-          <div class="card-tag">Gifting</div>
-          <h3>Gift Ideas (Ideas para Regalos)</h3>
-          <p>Thoughtful, aesthetic gift guides curated for birthdays, holidays, and everyday self-care treats.</p>
+          <div>
+            <div class="card-tag">Gifting &middot; Her</div>
+            <h3>Aesthetic Gift Guides</h3>
+            <p>Thoughtful jewelry boxes, luxury lip gloss sets, and curated skincare bundles for birthdays and special occasions.</p>
+          </div>
+          <a class="card-link" href="./jewelry.html#gifts">Browse Gift Picks &rarr;</a>
         </article>
       </div>
     </section>
@@ -216,15 +243,15 @@
       <div class="studio-box">
         <h2>About my charm Studio</h2>
         <p>
-          <strong>my charm Studio</strong> is the internal content publishing and analytics companion built exclusively for
-          the <strong>my charm</strong> digital brand (<code>@hamdamaqbool367</code>). It helps organize visual lookbooks,
-          schedule original Pin graphics to our owned Pinterest boards, and review engagement metrics such as impressions,
-          saves, and outbound clicks.
+          <strong>my charm</strong> (<code>@hamdamaqbool367</code>) creates original visual guides, skincare checklists,
+          and jewelry styling lookbooks for women. <strong>my charm studio</strong> is our internal publishing and analytics
+          companion using the Pinterest API v5 exclusively to manage our owned Pinterest Business boards, publish original Pins,
+          and analyze engagement performance.
         </p>
         <p>
-          Transparency matters to us: some product recommendations linked from our lookbooks and Pinterest boards may contain
-          affiliate links, meaning <strong>my charm</strong> may earn a small commission at no additional cost to you.
-          Read our full <a href="./disclosure.html">FTC Affiliate Disclosure</a> and <a href="./privacy-policy.html">Privacy Policy</a>.
+          <em>Affiliate Disclosure:</em> As an affiliate publisher, <strong>my charm</strong> earns commissions from qualifying
+          purchases made through select links on this site and on our Pinterest boards, at no extra cost to you.
+          See our <a href="./disclosure.html">FTC Affiliate Disclosure</a> and <a href="./privacy-policy.html">Privacy Policy</a>.
         </p>
         <p>
           Contact: <a href="mailto:hamdamaqbool367@gmail.com">hamdamaqbool367@gmail.com</a>
@@ -236,9 +263,10 @@
   <footer>
     <div class="footer-links">
       <a href="./index.html">Home</a>
+      <a href="./skincare.html">Skincare</a>
+      <a href="./jewelry.html">Jewelry</a>
       <a href="./privacy-policy.html">Privacy Policy</a>
       <a href="./disclosure.html">Affiliate Disclosure</a>
-      <a href="mailto:hamdamaqbool367@gmail.com">Contact</a>
     </div>
     <p>&copy; 2026 my charm. All rights reserved.</p>
   </footer>
