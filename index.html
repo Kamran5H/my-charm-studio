@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,234 +7,173 @@
   <meta name="fo-verify" content="6a522ae7-9169-4e55-8e10-0b58b7238a4f" />
   <!-- Awin -->
   <script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A8288708-685f-4e1c-9036-df835ed1604a1.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');</script>
-  <title>my charm — Women's Skincare, K-Beauty &amp; Everyday Gold Jewelry</title>
-  <meta name="description"
-    content="my charm is a women's skincare and minimalist jewelry editorial guide featuring glass-skin routines, everyday tarnish-free gold jewelry, and aesthetic beauty picks." />
+  <title>my charm — Women's Luxury Skincare, K-Beauty &amp; Everyday Gold Jewelry</title>
+  <meta name="description" content="my charm is a modern women's skincare and quiet-luxury gold jewelry boutique curating dermatologist-loved glass-skin routines, overnight collagen rituals, and tarnish-free everyday jewelry." />
   <style>
     :root {
-      --bg: #FCF8F5;
+      --bg: #FAF6F2;
       --surface: #FFFFFF;
-      --ink: #1F1A18;
-      --muted: #6C605B;
-      --accent: #B85A6A;
-      --accent-dark: #933E4D;
-      --gold: #C69B5C;
-      --border: #EFE5DE;
+      --ink: #1E1917;
+      --muted: #6C5F59;
+      --rose: #B85A6A;
+      --rose-dark: #923E4D;
+      --gold: #C29656;
+      --gold-dark: #9D7439;
+      --border: #EFE5DD;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
       color: var(--ink);
       line-height: 1.65;
     }
-
+    .top-bar {
+      background: #1E1917;
+      color: #F6ECE4;
+      text-align: center;
+      font-size: 0.84rem;
+      padding: 0.55rem 1rem;
+      letter-spacing: 0.03em;
+    }
+    .top-bar a { color: #E5C185; font-weight: 700; text-decoration: underline; margin-left: 0.4rem; }
     header {
-      background: var(--surface);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
-      padding: 1.2rem 2rem;
+      padding: 1.15rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
     }
-
     .brand {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       color: var(--ink);
       text-decoration: none;
     }
-
-    .brand span {
-      color: var(--accent);
-    }
-
+    .brand span { color: var(--rose); font-style: italic; }
     nav a {
-      margin-left: 1.4rem;
+      margin-left: 1.5rem;
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.94rem;
+      font-size: 0.93rem;
       font-weight: 500;
     }
-
-    nav a:hover {
-      color: var(--accent);
-    }
-
+    nav a:hover { color: var(--rose); }
     .hero {
-      max-width: 960px;
-      margin: 4rem auto 3rem;
+      max-width: 1120px;
+      margin: 3.2rem auto 2.5rem;
       padding: 0 1.5rem;
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2.5rem;
+      align-items: center;
     }
-
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .cta-group { justify-content: center; }
+    }
     .pill {
       display: inline-block;
-      background: #F6E6E8;
-      color: var(--accent-dark);
-      font-size: 0.78rem;
+      background: #F6E6E9;
+      color: var(--rose-dark);
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 0.38rem 1rem;
+      padding: 0.4rem 1rem;
       border-radius: 999px;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.15rem;
     }
-
     h1 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.1rem, 4.6vw, 3.35rem);
-      line-height: 1.18;
+      font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+      line-height: 1.15;
       margin-bottom: 1.1rem;
       font-weight: 600;
     }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 660px;
-      margin: 0 auto 2rem;
-      font-size: 1.07rem;
-    }
-
-    .cta-group {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
+    .hero p { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.85rem; }
+    .cta-group { display: flex; gap: 0.9rem; flex-wrap: wrap; }
     .btn {
       display: inline-block;
-      padding: 0.85rem 1.75rem;
+      padding: 0.85rem 1.7rem;
       border-radius: 999px;
       font-weight: 600;
       text-decoration: none;
-      font-size: 0.95rem;
-      transition: transform 0.15s ease, background 0.15s ease;
+      font-size: 0.93rem;
+      transition: transform 0.16s ease, opacity 0.16s ease;
     }
+    .btn:hover { transform: translateY(-2px); opacity: 0.94; }
+    .btn-rose { background: var(--rose); color: #fff; }
+    .btn-gold { background: var(--gold); color: #fff; }
+    .btn-outline { border: 1px solid var(--border); background: #fff; color: var(--ink); }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
+    .hero-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
+    .hero-gallery img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 18px 36px rgba(30, 25, 23, 0.09);
+    }
+    .hero-gallery img:nth-child(2) { margin-top: 1.75rem; }
 
-    .btn-primary:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
-    }
-
-    .btn-gold {
-      background: var(--gold);
-      color: #fff;
-    }
-
-    .btn-gold:hover {
-      opacity: 0.92;
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--ink);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .section {
-      max-width: 1040px;
-      margin: 3.5rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .section-title {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
+    .section { max-width: 1120px; margin: 4rem auto; padding: 0 1.5rem; }
+    .section-head { text-align: center; margin-bottom: 2.2rem; }
+    .section-head h2 { font-family: Georgia, serif; font-size: 2rem; margin-bottom: 0.45rem; }
+    .section-head p { color: var(--muted); font-size: 0.98rem; }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.3rem;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
     }
-
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.8rem 1.5rem;
+      border-radius: 20px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      box-shadow: 0 8px 24px rgba(30, 25, 23, 0.04);
+      transition: transform 0.2s ease;
     }
-
+    .card:hover { transform: translateY(-4px); }
+    .card-img { width: 100%; height: 290px; object-fit: cover; display: block; }
+    .card-body { padding: 1.45rem; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
     .card-tag {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+      color: var(--rose);
+      margin-bottom: 0.45rem;
     }
+    .card-tag.gold { color: var(--gold-dark); }
+    .card h3 { font-family: Georgia, serif; font-size: 1.22rem; margin-bottom: 0.55rem; line-height: 1.3; }
+    .card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.15rem; }
+    .card-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
 
-    .card h3 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.25rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.94rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .card-link {
-      color: var(--accent-dark);
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.92rem;
-    }
-
-    .card-link:hover {
-      text-decoration: underline;
-    }
-
-    .studio-box {
+    .about-box {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 2.25rem;
       margin-top: 2rem;
     }
-
-    .studio-box h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .studio-box p {
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-      font-size: 0.97rem;
-    }
+    .about-box h2 { font-family: Georgia, serif; font-size: 1.55rem; margin-bottom: 0.75rem; }
+    .about-box p { color: var(--muted); margin-bottom: 0.85rem; font-size: 0.95rem; }
 
     footer {
       margin-top: 4.5rem;
@@ -244,116 +182,156 @@
       padding: 2.25rem 1.5rem;
       text-align: center;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
-
-    footer a {
-      color: var(--ink);
-      text-decoration: none;
-      margin: 0 0.75rem;
-    }
-
-    footer a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    .footer-links {
-      margin-bottom: 0.85rem;
-    }
+    footer a { color: var(--ink); text-decoration: none; margin: 0 0.75rem; }
+    footer a:hover { color: var(--rose); text-decoration: underline; }
+    .footer-links { margin-bottom: 0.8rem; }
   </style>
 </head>
-
 <body>
+  <div class="top-bar">
+    Exclusive Reader Perk: Save 30% Off Viral Beauty &amp; Jewelry Finds with Code <strong>ald543171</strong>
+    <a href="https://temu.to/k/e0ww43lc26p" rel="nofollow sponsored noopener" target="_blank">Claim Bundle &rarr;</a>
+  </div>
+
   <header>
     <a class="brand" href="./index.html">my <span>charm</span></a>
     <nav>
       <a href="./skincare.html">Skincare Edits</a>
       <a href="./jewelry.html">Jewelry Edits</a>
-      <a href="./disclosure.html">Affiliate Disclosure</a>
+      <a href="./disclosure.html">Disclosure</a>
       <a href="./privacy-policy.html">Privacy Policy</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <div class="pill">Women's Skincare &amp; Everyday Fine Jewelry</div>
-      <h1>Radiant Glass Skin &amp; Timeless Everyday Jewelry</h1>
-      <p>
-        Welcome to <strong>my charm</strong> — a women's beauty and style journal curating dermatologist-loved
-        skincare routines, K-Beauty glow essentials, waterproof 18k gold-plated jewelry, and chic feminine gift edits.
-      </p>
-      <div class="cta-group">
-        <a class="btn btn-primary" href="./skincare.html">Shop Skincare Edits</a>
-        <a class="btn btn-gold" href="./jewelry.html">Shop Jewelry Edits</a>
-        <a class="btn btn-outline" href="https://www.pinterest.com/hamdamaqbool367/" target="_blank"
-          rel="noopener">Follow on Pinterest</a>
+      <div>
+        <div class="pill">Women's Skincare &amp; Quiet-Luxury Jewelry</div>
+        <h1>Radiant Glass Skin &amp; Timeless Everyday Gold</h1>
+        <p>
+          Welcome to <strong>my charm</strong> — an editorial beauty and jewelry journal curated for modern women.
+          Explore dermatologist-loved K-Beauty glow rituals, overnight collagen masks, and waterproof 18k gold-plated pieces you never have to take off.
+        </p>
+        <div class="cta-group">
+          <a class="btn btn-rose" href="./skincare.html">Shop Skincare Edits</a>
+          <a class="btn btn-gold" href="./jewelry.html">Shop Gold Jewelry</a>
+          <a class="btn btn-outline" href="https://www.pinterest.com/hamdamaqbool367/" target="_blank" rel="noopener">Pinterest @hamdamaqbool367</a>
+        </div>
+      </div>
+      <div class="hero-gallery">
+        <img src="./images/skincare_glass_skin.jpg" alt="Glass-skin skincare dropper serum bottles on travertine marble" />
+        <img src="./images/jewelry_gold_hoops.jpg" alt="18k gold sculpted hoop earrings on cream silk" />
       </div>
     </section>
 
     <section class="section">
-      <h2 class="section-title">Curated Women's Collections</h2>
+      <div class="section-head">
+        <h2>Most-Saved Women's Edits This Week</h2>
+        <p>Hand-picked skincare &amp; jewelry staples — shop directly through our verified retail partners (#ad #affiliate).</p>
+      </div>
       <div class="grid">
         <article class="card">
-          <div>
-            <div class="card-tag">Skincare &middot; K-Beauty</div>
-            <h3>Glass-Skin Glow Routines</h3>
-            <p>Hydrating snail mucin essences, niacinamide brightening serums, barrier-repair creams, and dewy SPFs for
-              radiant daily skin.</p>
+          <img class="card-img" src="./images/skincare_glass_skin.jpg" alt="3-Step Glass Skin Essence Routine" />
+          <div class="card-body">
+            <div>
+              <div class="card-tag">Skincare &middot; K-Beauty</div>
+              <h3>The 3-Step Glass Skin Routine</h3>
+              <p>Snail mucin &amp; hyaluronic hydration layers that calm redness and deliver luminous, plump skin under $25.</p>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-rose btn-sm" href="./skincare.html#snail-mucin">View Routine &rarr;</a>
+              <a class="btn btn-outline btn-sm" href="https://www.amazon.com/s?k=COSRX+Snail+Mucin+96+Power+Repairing+Essence&tag=mycharmstudio-20" rel="nofollow sponsored noopener" target="_blank">Shop Amazon</a>
+            </div>
           </div>
-          <a class="card-link" href="./skincare.html">View Skincare Guide &rarr;</a>
         </article>
+
         <article class="card">
-          <div>
-            <div class="card-tag">Jewelry &middot; Everyday Gold</div>
-            <h3>Tarnish-Free Gold Jewelry</h3>
-            <p>Dainty layered herringbone necklaces, chunky gold hoop earrings, stackable rings, and pearl bracelets
-              built for everyday wear.</p>
+          <img class="card-img" src="./images/skincare_collagen_ritual.jpg" alt="Overnight Hydrogel Collagen Facial Mask" />
+          <div class="card-body">
+            <div>
+              <div class="card-tag">Viral Spa Ritual &middot; 71.9K+ Sold</div>
+              <h3>Overnight Collagen Glass-Skin Mask</h3>
+              <p>Silky moisturizing hydrogel collagen facial masks that visibly plump and brighten while you sleep.</p>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-rose btn-sm" href="https://temu.to/k/eebwpgat1b3" rel="nofollow sponsored noopener" target="_blank">30% Off on Temu &rarr;</a>
+              <a class="btn btn-outline btn-sm" href="./skincare.html#collagen-mask">Details</a>
+            </div>
           </div>
-          <a class="card-link" href="./jewelry.html">View Jewelry Guide &rarr;</a>
         </article>
+
         <article class="card">
-          <div>
-            <div class="card-tag">Self-Care Tools</div>
-            <h3>Beauty &amp; Gua Sha Rituals</h3>
-            <p>Rose quartz facial rollers, cooling ice globes, silk pillowcases, and LED skincare tools for an at-home
-              spa glow.</p>
+          <img class="card-img" src="./images/jewelry_gold_hoops.jpg" alt="Waterproof 18K Gold Teardrop Hoops" />
+          <div class="card-body">
+            <div>
+              <div class="card-tag gold">Everyday Gold &middot; Waterproof</div>
+              <h3>18K Gold Chunky Teardrop Hoops</h3>
+              <p>Feather-light, tarnish-free sculpted gold hoops crafted for sensitive ears and effortless quiet-luxury polish.</p>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-gold btn-sm" href="./jewelry.html#gold-hoops">Shop Look &rarr;</a>
+              <a class="btn btn-outline btn-sm" href="https://www.amazon.com/s?k=18k+gold+plated+waterproof+chunky+teardrop+hoop+earrings+women&tag=mycharmstudio-20" rel="nofollow sponsored noopener" target="_blank">Shop Amazon</a>
+            </div>
           </div>
-          <a class="card-link" href="./skincare.html#tools">Explore Beauty Tools &rarr;</a>
         </article>
+
         <article class="card">
-          <div>
-            <div class="card-tag">Gifting &middot; Her</div>
-            <h3>Aesthetic Gift Guides</h3>
-            <p>Thoughtful jewelry boxes, luxury lip gloss sets, and curated skincare bundles for birthdays and special
-              occasions.</p>
+          <img class="card-img" src="./images/jewelry_butterfly_pearl.jpg" alt="5-Piece Pearl and Moonstone Necklace Set" />
+          <div class="card-body">
+            <div>
+              <div class="card-tag gold">Trending Gift &middot; 46.7K+ Sold</div>
+              <h3>5-Piece Pearl &amp; Moonstone Set</h3>
+              <p>Feminine layered shell butterfly, luminous pearl, and shimmering moonstone necklace set under $15.</p>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-gold btn-sm" href="https://temu.to/k/etsaku9lmet" rel="nofollow sponsored noopener" target="_blank">Shop on Temu &rarr;</a>
+              <a class="btn btn-outline btn-sm" href="./jewelry.html#butterfly-pearl-set">Details</a>
+            </div>
           </div>
-          <a class="card-link" href="./jewelry.html#gifts">Browse Gift Picks &rarr;</a>
+        </article>
+
+        <article class="card">
+          <img class="card-img" src="./images/skincare_vitamin_c.jpg" alt="Vitamin C Brightening Glow Serum and Rose Quartz Gua Sha" />
+          <div class="card-body">
+            <div>
+              <div class="card-tag">Morning Glow &middot; Radiance</div>
+              <h3>Vitamin C Serum &amp; Gua Sha Edit</h3>
+              <p>Brightening niacinamide glow drops paired with rose quartz lymphatic sculpting for even-toned morning skin.</p>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-rose btn-sm" href="./skincare.html#vitamin-c">Read Edit &rarr;</a>
+              <a class="btn btn-outline btn-sm" href="https://www.amazon.com/s?k=vitamin+c+niacinamide+brightening+glow+serum+women+skincare&tag=mycharmstudio-20" rel="nofollow sponsored noopener" target="_blank">Shop Amazon</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img class="card-img" src="./images/jewelry_layered_necklace.jpg" alt="Dainty Herringbone and Freshwater Pearl Layered Necklaces" />
+          <div class="card-body">
+            <div>
+              <div class="card-tag gold">Layering Edit &middot; Minimalist</div>
+              <h3>Dainty Herringbone &amp; Pearl Layers</h3>
+              <p>Effortless Parisian-inspired gold chains and freshwater pearl pendants that elevate every daily outfit.</p>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-gold btn-sm" href="./jewelry.html#layered-necklace">Shop Edit &rarr;</a>
+              <a class="btn btn-outline btn-sm" href="https://www.amazon.com/s?k=18k+gold+herringbone+layered+pearl+necklace+women+tarnish+free&tag=mycharmstudio-20" rel="nofollow sponsored noopener" target="_blank">Shop Amazon</a>
+            </div>
+          </div>
         </article>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="studio-box">
-        <h2>About my charm Studio</h2>
+    <section class="section">
+      <div class="about-box">
+        <h2>About my charm &amp; Transparency</h2>
         <p>
-          <strong>my charm</strong> (<code>@hamdamaqbool367</code>) creates original visual guides, skincare checklists,
-          and jewelry styling lookbooks for women. <strong>my charm studio</strong> is our internal publishing and
-          analytics
-          companion using the Pinterest API v5 exclusively to manage our owned Pinterest Business boards, publish
-          original Pins,
-          and analyze engagement performance.
+          <strong>my charm</strong> (<code>@hamdamaqbool367</code>) curates visual lookbooks, skincare guides, and everyday fine jewelry inspiration for women.
+          <em>FTC Affiliate Disclosure:</em> As an Amazon Associate, Temu Affiliate, and Rakuten Advertising publisher, <strong>my charm</strong> earns commissions from qualifying purchases made via select links on this website and on Pinterest, at zero extra cost to you.
         </p>
-        <p>
-          <em>Affiliate Disclosure:</em> As an affiliate publisher, <strong>my charm</strong> earns commissions from
-          qualifying
-          purchases made through select links on this site and on our Pinterest boards, at no extra cost to you.
-          See our <a href="./disclosure.html">FTC Affiliate Disclosure</a> and <a href="./privacy-policy.html">Privacy
-            Policy</a>.
-        </p>
-        <p>
-          Contact: <a href="mailto:hamdamaqbool367@gmail.com">hamdamaqbool367@gmail.com</a>
-        </p>
+        <p>Contact: <a href="mailto:hamdamaqbool367@gmail.com">hamdamaqbool367@gmail.com</a></p>
       </div>
     </section>
   </main>
@@ -361,13 +339,12 @@
   <footer>
     <div class="footer-links">
       <a href="./index.html">Home</a>
-      <a href="./skincare.html">Skincare</a>
-      <a href="./jewelry.html">Jewelry</a>
+      <a href="./skincare.html">Skincare Edits</a>
+      <a href="./jewelry.html">Jewelry Edits</a>
       <a href="./privacy-policy.html">Privacy Policy</a>
       <a href="./disclosure.html">Affiliate Disclosure</a>
     </div>
     <p>&copy; 2026 my charm. All rights reserved.</p>
   </footer>
 </body>
-
 </html>
