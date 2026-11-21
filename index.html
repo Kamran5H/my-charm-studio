@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>my charm — Curated Style, Accessories, Nail Art &amp; Gift Ideas</title>
+  <meta name="description" content="my charm curates effortless aesthetic style, accessories, trendy nail art inspiration, and thoughtful gift ideas." />
+  <style>
+    :root {
+      --bg: #FAF7F4;
+      --surface: #FFFFFF;
+      --ink: #1C1917;
+      --muted: #665E58;
+      --accent: #B84A58;
+      --accent-dark: #943643;
+      --border: #EAE2DA;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .brand span { color: var(--accent); }
+    nav a {
+      margin-left: 1.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    nav a:hover { color: var(--accent); }
+    .hero {
+      max-width: 960px;
+      margin: 4rem auto 3rem;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .pill {
+      display: inline-block;
+      background: #F4E4E6;
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 4.5vw, 3.25rem);
+      line-height: 1.18;
+      margin-bottom: 1.15rem;
+      font-weight: 600;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      font-size: 1.08rem;
+    }
+    .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 1.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .btn-outline { border: 1px solid var(--border); background: var(--surface); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .section {
+      max-width: 1040px;
+      margin: 3.5rem auto;
+      padding: 0 1.5rem;
+    }
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+    }
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .card h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
+    }
+    .card p { color: var(--muted); font-size: 0.94rem; }
+
+    .studio-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.25rem;
+      margin-top: 2rem;
+    }
+    .studio-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .studio-box p { color: var(--muted); margin-bottom: 0.9rem; font-size: 0.97rem; }
+
+    footer {
+      margin-top: 4.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--ink); text-decoration: none; margin: 0 0.75rem; }
+    footer a:hover { color: var(--accent); text-decoration: underline; }
+    .footer-links { margin-bottom: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./index.html">my <span>charm</span></a>
+    <nav>
+      <a href="#collections">Collections</a>
+      <a href="#about">About Studio</a>
+      <a href="./disclosure.html">Affiliate Disclosure</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="pill">Curated Editorial &amp; Lifestyle Inspiration</div>
+      <h1>Effortless Style, Aesthetic Nail Art &amp; Everyday Accessories</h1>
+      <p>
+        Welcome to <strong>my charm</strong> — a curated style journal and visual lookbook sharing timeless accessories,
+        minimalist fashion edits, trendy aesthetic nail art inspiration, and thoughtful gift guides.
+      </p>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="https://www.pinterest.com/hamdamaqbool367/" target="_blank" rel="noopener">Explore on Pinterest</a>
+        <a class="btn btn-outline" href="#collections">Browse Curated Categories</a>
+      </div>
+    </section>
+
+    <section id="collections" class="section">
+      <h2 class="section-title">Featured Curated Collections</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="card-tag">Lookbook</div>
+          <h3>Style &amp; Outfit Edits</h3>
+          <p>Seasonal wardrobe staples, neutral layering guides, and elevated everyday outfits curated for effortless dressing.</p>
+        </article>
+        <article class="card">
+          <div class="card-tag">Details</div>
+          <h3>Accessories &amp; Jewelry</h3>
+          <p>Minimalist gold pieces, structured handbags, hair clips, and statement accents that complete any look.</p>
+        </article>
+        <article class="card">
+          <div class="card-tag">Beauty</div>
+          <h3>Aesthetic Nail Art Inspo</h3>
+          <p>Trending chrome finishes, soft pastel manicures, clean-girl sheer sets, and seasonal nail design inspiration.</p>
+        </article>
+        <article class="card">
+          <div class="card-tag">Gifting</div>
+          <h3>Gift Ideas (Ideas para Regalos)</h3>
+          <p>Thoughtful, aesthetic gift guides curated for birthdays, holidays, and everyday self-care treats.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="studio-box">
+        <h2>About my charm Studio</h2>
+        <p>
+          <strong>my charm Studio</strong> is the internal content publishing and analytics companion built exclusively for
+          the <strong>my charm</strong> digital brand (<code>@hamdamaqbool367</code>). It helps organize visual lookbooks,
+          schedule original Pin graphics to our owned Pinterest boards, and review engagement metrics such as impressions,
+          saves, and outbound clicks.
+        </p>
+        <p>
+          Transparency matters to us: some product recommendations linked from our lookbooks and Pinterest boards may contain
+          affiliate links, meaning <strong>my charm</strong> may earn a small commission at no additional cost to you.
+          Read our full <a href="./disclosure.html">FTC Affiliate Disclosure</a> and <a href="./privacy-policy.html">Privacy Policy</a>.
+        </p>
+        <p>
+          Contact: <a href="mailto:hamdamaqbool367@gmail.com">hamdamaqbool367@gmail.com</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="./index.html">Home</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      <a href="./disclosure.html">Affiliate Disclosure</a>
+      <a href="mailto:hamdamaqbool367@gmail.com">Contact</a>
+    </div>
+    <p>&copy; 2026 my charm. All rights reserved.</p>
+  </footer>
+</body>
+</html>
