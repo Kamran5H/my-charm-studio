@@ -6,26 +6,29 @@
   <title>Privacy Policy — my charm studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <canvas id="bg-3d-canvas" aria-hidden="true"></canvas>
+  <div class="scroll-progress-track" aria-hidden="true"><div id="scroll-progress-bar"></div></div>
+
   <header class="site-header">
     <div class="header-inner">
       <a class="brand-logo" href="./index.html" aria-label="my charm Home">
         <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="20" cy="20" r="19" fill="#FDF2F4" stroke="#B45566" stroke-width="1.5" />
-          <path d="M20 7.5C21.2 14.2 25.8 18.8 32.5 20C25.8 21.2 21.2 25.8 20 32.5C18.8 25.8 14.2 21.2 7.5 20C14.2 18.8 18.8 14.2 20 7.5Z" fill="#BE904E" />
-          <circle cx="20" cy="20" r="2.8" fill="#B45566" />
+          <circle cx="20" cy="20" r="19" fill="#FDF2F4" stroke="#C14E67" stroke-width="1.5" />
+          <path d="M20 7.5C21.2 14.2 25.8 18.8 32.5 20C25.8 21.2 21.2 25.8 20 32.5C18.8 25.8 14.2 21.2 7.5 20C14.2 18.8 18.8 14.2 20 7.5Z" fill="#C49243" />
+          <circle cx="20" cy="20" r="2.8" fill="#C14E67" />
         </svg>
         <span class="brand-wordmark">my <span>charm</span></span>
       </a>
       <nav class="site-nav" aria-label="Main navigation">
         <a href="./index.html">Home</a>
-        <a href="./editorial.html">Editorial Lookbook</a>
-        <a href="./skincare.html">Skincare</a>
-        <a href="./jewelry.html">Gold Jewelry</a>
         <a href="./pins.html">Shop Pins</a>
+        <a href="./skincare.html">Glass Skincare</a>
+        <a href="./jewelry.html">18K Gold</a>
+        <a href="./editorial.html">4K Lookbook</a>
       </nav>
     </div>
   </header>
@@ -49,11 +52,12 @@
     <div class="footer-brand">my <span>charm</span></div>
     <div class="footer-links">
       <a href="./index.html">Home</a>
-      <a href="./editorial.html">Editorial Lookbook</a>
-      <a href="./disclosure.html">Disclosure</a>
+      <a href="./pins.html">Shop Pins</a>
+      <a href="./disclosure.html">FTC Disclosure</a>
       <a href="./privacy-policy.html">Privacy Policy</a>
     </div>
-    <p>&copy; 2026 my charm. All rights reserved.</p>
+    <p>&copy; 2026 my charm (@hamdamaqbool367). All rights reserved.</p>
   </footer>
+  <script src="./motion3d.js" defer></script>
 </body>
 </html>
