@@ -1,8 +1,11 @@
 /* ==========================================================================
-   my charm — Interactive 3D Scroll Background & Luxury Glass UI Engine
-   Zero-dependency 60fps 3D perspective canvas (faceted rose-quartz crystals,
-   18K liquid-gold rings, glass-skin droplets & morphing color atmosphere)
-   + 3D card tilt glare + instant Pinterest Pin/Photo view & category filters.
+   my charm — Vivid 60fps 3D Scroll-Motion Background & Interactive 3D UI
+   - True 3D perspective camera fly-through driven by scroll (laptop + mobile)
+   - 4 unmistakable luxury atmosphere chapters (Ivory Pearl -> Rose-Quartz ->
+     18K Liquid Gold -> Velvet Twilight) with 3D perspective silk grid,
+     faceted rose/gold crystals, double-beveled 3D gold halo rings & bokeh
+   - Scroll-reactive 3D Hero Pin Deck + desktop 3D tilt glare + mobile 3D tap
+   - Zero-delay always-visible cards + instant category & Pin/Photo switcher
    ========================================================================== */
 (function () {
   "use strict";
@@ -11,45 +14,51 @@
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ------------------------------------------------------------------------
-     1. 3D SCROLL-REACTIVE BACKGROUND CANVAS
-     ------------------------------------------------------------------------ */
   const canvas = document.getElementById("bg-3d-canvas");
   const progressBar = document.getElementById("scroll-progress-bar");
+  const heroDeck = document.querySelector(".hero-deck");
 
-  // Luxury scroll palette stops (0% -> 33% -> 66% -> 100%)
+  // 4 distinct, unmistakable luxury scroll chapters (high-contrast safe for dark ink & glass cards)
   const PALETTES = [
     {
-      bgTop: [253, 248, 244],
-      bgBot: [246, 234, 226],
-      orb1: [242, 194, 206],
-      orb2: [244, 212, 154],
-      accent: [193, 78, 103],
-      gold: [204, 152, 74],
+      // 0% — Sunlit Ivory Pearl & Rose-Gold
+      bgTop: [253, 245, 238],
+      bgBot: [246, 224, 219],
+      orb1: [238, 152, 174],
+      orb2: [242, 198, 120],
+      accent: [193, 74, 102],
+      gold: [202, 146, 56],
+      grid: [196, 134, 118],
     },
     {
-      bgTop: [252, 234, 241],
-      bgBot: [245, 219, 230],
-      orb1: [232, 134, 162],
-      orb2: [248, 198, 168],
-      accent: [196, 68, 102],
-      gold: [216, 156, 82],
+      // 33% — Luminous Rose-Quartz Glass Skin
+      bgTop: [252, 224, 235],
+      bgBot: [242, 192, 214],
+      orb1: [224, 96, 138],
+      orb2: [248, 176, 156],
+      accent: [188, 52, 92],
+      gold: [212, 148, 72],
+      grid: [194, 88, 122],
     },
     {
-      bgTop: [253, 244, 224],
-      bgBot: [244, 226, 194],
-      orb1: [238, 188, 102],
-      orb2: [240, 174, 182],
-      accent: [194, 136, 48],
-      gold: [214, 160, 68],
+      // 66% — Radiant 18K Liquid Champagne Gold
+      bgTop: [254, 241, 208],
+      bgBot: [242, 209, 146],
+      orb1: [232, 172, 62],
+      orb2: [238, 148, 162],
+      accent: [186, 124, 34],
+      gold: [204, 144, 42],
+      grid: [184, 132, 48],
     },
     {
-      bgTop: [245, 231, 229],
-      bgBot: [232, 214, 208],
-      orb1: [214, 150, 166],
-      orb2: [228, 184, 120],
-      accent: [172, 76, 98],
-      gold: [192, 140, 72],
+      // 100% — Velvet Mauve-Rose & Gold Dusk
+      bgTop: [238, 220, 234],
+      bgBot: [218, 190, 214],
+      orb1: [188, 112, 158],
+      orb2: [224, 172, 108],
+      accent: [152, 68, 114],
+      gold: [188, 136, 60],
+      grid: [156, 98, 134],
     },
   ];
 
@@ -79,6 +88,7 @@
       orb2: lerpColor(A.orb2, B.orb2, localT),
       accent: lerpColor(A.accent, B.accent, localT),
       gold: lerpColor(A.gold, B.gold, localT),
+      grid: lerpColor(A.grid, B.grid, localT),
     };
   }
 
@@ -86,14 +96,14 @@
     return `rgba(${c[0]},${c[1]},${c[2]},${a})`;
   }
 
-  // 3D Octahedron gem vertices & faces
+  // 3D Octahedron crystal mesh
   const GEM_VERTS = [
-    [0, 1.35, 0],
+    [0, 1.42, 0],
     [1, 0, 0],
     [0, 0, 1],
     [-1, 0, 0],
     [0, 0, -1],
-    [0, -1.35, 0],
+    [0, -1.42, 0],
   ];
   const GEM_FACES = [
     [0, 1, 2],
@@ -108,21 +118,20 @@
 
   function rotate3D(v, rx, ry, rz) {
     let [x, y, z] = v;
-    // Rotate X
     const cx = Math.cos(rx),
       sx = Math.sin(rx);
     let y1 = y * cx - z * sx;
     let z1 = y * sx + z * cx;
     y = y1;
     z = z1;
-    // Rotate Y
+
     const cy = Math.cos(ry),
       sy = Math.sin(ry);
     let x1 = x * cy + z * sy;
     z1 = -x * sy + z * cy;
     x = x1;
     z = z1;
-    // Rotate Z
+
     const cz = Math.cos(rz),
       sz = Math.sin(rz);
     x1 = x * cz - y * sz;
@@ -151,55 +160,60 @@
 
     const isMobile = W < 768;
     const objects = [];
+    const spreadX = isMobile ? 250 : 540;
 
-    // Create 3D faceted rose-quartz & pearl crystals
-    const gemCount = isMobile ? 6 : 11;
+    // 3D Faceted Crystals (positioned across foreground & margins so clearly visible on mobile & laptop)
+    const gemCount = isMobile ? 8 : 14;
     for (let i = 0; i < gemCount; i++) {
       const side = i % 2 === 0 ? -1 : 1;
+      const xPos =
+        i % 3 === 0
+          ? ((i * 97) % (spreadX * 1.4)) - spreadX * 0.7
+          : side * ((isMobile ? 95 : 210) + ((i * 113) % (spreadX * 0.85)));
       objects.push({
         type: "gem",
-        x: side * (220 + ((i * 137) % 440)),
-        y: -420 + (i / gemCount) * 1050,
-        z: 180 + ((i * 211) % 760),
-        size: 32 + ((i * 19) % 38),
-        rx: i * 0.7,
-        ry: i * 1.1,
-        rz: i * 0.4,
-        vrx: 0.004 + (i % 3) * 0.002,
-        vry: 0.006 + (i % 4) * 0.002,
+        x: xPos,
+        y: -440 + (i / gemCount) * 1020,
+        z: 140 + ((i * 191) % 820),
+        size: (isMobile ? 28 : 42) + ((i * 17) % (isMobile ? 24 : 38)),
+        rx: i * 0.65,
+        ry: i * 1.15,
+        rz: i * 0.35,
+        vrx: 0.008 + (i % 3) * 0.003,
+        vry: 0.011 + (i % 4) * 0.003,
         tone: i % 2 === 0 ? "accent" : "gold",
       });
     }
 
-    // Create 3D rotating 18K gold halo rings
-    const ringCount = isMobile ? 4 : 7;
+    // 3D Metallic 18K Gold & Rose Halo Rings
+    const ringCount = isMobile ? 6 : 9;
     for (let i = 0; i < ringCount; i++) {
       const side = i % 2 === 0 ? 1 : -1;
       objects.push({
         type: "ring",
-        x: side * (190 + ((i * 173) % 480)),
-        y: -360 + (i / ringCount) * 960,
-        z: 240 + ((i * 197) % 720),
-        size: 56 + ((i * 29) % 62),
-        rx: 0.6 + i * 0.45,
-        ry: i * 0.9,
-        rz: i * 0.3,
-        vrx: 0.005,
-        vry: 0.008,
+        x: side * ((isMobile ? 80 : 180) + ((i * 149) % spreadX)),
+        y: -380 + (i / ringCount) * 920,
+        z: 190 + ((i * 173) % 760),
+        size: (isMobile ? 48 : 74) + ((i * 23) % (isMobile ? 42 : 64)),
+        rx: 0.5 + i * 0.48,
+        ry: i * 0.85,
+        rz: i * 0.28,
+        vrx: 0.009,
+        vry: 0.013,
         tone: i % 3 === 0 ? "accent" : "gold",
       });
     }
 
-    // Create floating 3D glass-skin pearl/dew spheres
-    const pearlCount = isMobile ? 12 : 22;
+    // 3D Glass-Skin Dew Pearls & Luminous Bokeh
+    const pearlCount = isMobile ? 16 : 26;
     for (let i = 0; i < pearlCount; i++) {
       objects.push({
         type: "pearl",
-        x: ((i * 263) % 1300) - 650,
-        y: ((i * 199) % 1100) - 550,
-        z: 120 + ((i * 149) % 880),
-        size: 8 + ((i * 11) % 24),
-        phase: i * 0.85,
+        x: ((i * 227) % (spreadX * 2.4)) - spreadX * 1.2,
+        y: ((i * 181) % 1080) - 540,
+        z: 110 + ((i * 137) % 860),
+        size: 10 + ((i * 13) % 26),
+        phase: i * 0.8,
         tone: i % 2 === 0 ? "orb1" : "orb2",
       });
     }
@@ -207,30 +221,43 @@
     let scrollProgress = 0;
     let smoothScroll = 0;
     let scrollVelocity = 0;
-    let lastScrollY = window.scrollY || 0;
+    let lastScrollY = 0;
     let mouseX = 0;
     let mouseY = 0;
     let smoothMouseX = 0;
     let smoothMouseY = 0;
 
-    function updateScrollTarget() {
-      const maxScroll = Math.max(
-        1,
-        Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) -
-          window.innerHeight
-      );
-      const sy =
+    function readScrollY() {
+      return (
         window.scrollY ||
         window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop ||
-        0;
-      scrollVelocity += (sy - lastScrollY) * 0.0022;
-      scrollVelocity = Math.max(-0.32, Math.min(0.32, scrollVelocity));
+        0
+      );
+    }
+
+    function updateScrollTarget() {
+      const maxScroll = Math.max(
+        1,
+        Math.max(
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight
+        ) - window.innerHeight
+      );
+      const sy = readScrollY();
+      const delta = sy - lastScrollY;
+      scrollVelocity += delta * 0.0032;
+      scrollVelocity = Math.max(-0.45, Math.min(0.45, scrollVelocity));
       lastScrollY = sy;
       scrollProgress = Math.max(0, Math.min(1, sy / maxScroll));
       if (progressBar) {
         progressBar.style.transform = `scaleX(${scrollProgress.toFixed(4)})`;
+      }
+      // Subtle 3D scroll reaction on Hero Pin Deck (works smoothly on both laptop & mobile!)
+      if (heroDeck && !prefersReduced) {
+        const heroShift = Math.min(1, sy / 520);
+        heroDeck.style.setProperty("--hero-scroll", heroShift.toFixed(3));
       }
     }
 
@@ -243,98 +270,145 @@
       },
       { passive: true }
     );
+    lastScrollY = readScrollY();
     updateScrollTarget();
+    smoothScroll = scrollProgress;
+
+    // Draw a subtle 3D perspective floor/horizon grid that flies toward the viewer as you scroll
+    function draw3DHorizonGrid(pal, sProg, camPitch, camYaw) {
+      const focal = Math.min(W, H) * 0.85;
+      const horizonY = H * 0.62 - camPitch * 120;
+      ctx.save();
+      ctx.strokeStyle = rgb(pal.grid, 0.16);
+      ctx.lineWidth = 1;
+
+      const zOffset = (sProg * 1400) % 160;
+      // Horizontal depth lines flying toward camera
+      for (let zi = 1; zi <= 10; zi++) {
+        const z = zi * 160 - zOffset;
+        if (z < 60) continue;
+        const scale = focal / z;
+        const y = horizonY + 260 * scale;
+        if (y > H + 30 || y < horizonY - 10) continue;
+        ctx.globalAlpha = Math.max(0.05, Math.min(0.32, 1 - z / 1550));
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(W, y);
+        ctx.stroke();
+      }
+      // Radial perspective lines converging at moving 3D vanishing point
+      const vpX = W * 0.5 - camYaw * 360;
+      ctx.globalAlpha = 0.14;
+      for (let xi = -6; xi <= 6; xi++) {
+        const bx = vpX + xi * (W * 0.22);
+        ctx.beginPath();
+        ctx.moveTo(vpX, horizonY);
+        ctx.lineTo(bx, H + 40);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
 
     let t = 0;
     function renderFrame() {
       updateScrollTarget();
-      t += prefersReduced ? 0.001 : 0.012;
-      smoothScroll += (scrollProgress - smoothScroll) * 0.14;
-      scrollVelocity *= 0.91;
-      smoothMouseX += (mouseX - smoothMouseX) * 0.06;
-      smoothMouseY += (mouseY - smoothMouseY) * 0.06;
+      t += prefersReduced ? 0 : 0.015;
+      smoothScroll += (scrollProgress - smoothScroll) * 0.22;
+      scrollVelocity *= 0.88;
+      smoothMouseX += (mouseX - smoothMouseX) * 0.07;
+      smoothMouseY += (mouseY - smoothMouseY) * 0.07;
 
       const pal = samplePalette(smoothScroll);
 
-      // Base morphing gradient sky
-      const sky = ctx.createLinearGradient(0, 0, W * 0.4, H);
+      // 1. Dynamic 4-chapter background sky gradient
+      const angleShift = Math.sin(smoothScroll * Math.PI * 2) * W * 0.25;
+      const sky = ctx.createLinearGradient(
+        W * 0.2 + angleShift,
+        0,
+        W * 0.8 - angleShift,
+        H
+      );
       sky.addColorStop(0, rgb(pal.bgTop, 1));
       sky.addColorStop(1, rgb(pal.bgBot, 1));
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, W, H);
 
-      // 3D volumetric atmospheric light orbs shifting dramatically with scroll
+      // 2. Vivid volumetric light spheres sweeping across viewport with scroll
       const orb1X =
-        W * (0.16 + Math.sin(smoothScroll * Math.PI * 1.4 + t * 0.25) * 0.28) -
-        smoothMouseX * 45;
+        W * (0.18 + Math.sin(smoothScroll * Math.PI * 2.1 + t * 0.35) * 0.36) -
+        smoothMouseX * 55;
       const orb1Y =
-        H * (0.22 + Math.cos(smoothScroll * Math.PI * 1.2) * 0.26) -
-        smoothMouseY * 30;
-      const r1 = Math.max(W, H) * 0.52;
+        H * (0.24 + Math.cos(smoothScroll * Math.PI * 1.7) * 0.32) -
+        smoothMouseY * 35;
+      const r1 = Math.max(W, H) * 0.58;
       const g1 = ctx.createRadialGradient(orb1X, orb1Y, 0, orb1X, orb1Y, r1);
-      g1.addColorStop(0, rgb(pal.orb1, 0.52));
-      g1.addColorStop(0.55, rgb(pal.orb1, 0.16));
+      g1.addColorStop(0, rgb(pal.orb1, 0.56));
+      g1.addColorStop(0.5, rgb(pal.orb1, 0.18));
       g1.addColorStop(1, rgb(pal.orb1, 0));
       ctx.fillStyle = g1;
       ctx.fillRect(0, 0, W, H);
 
       const orb2X =
-        W * (0.84 - Math.sin(smoothScroll * Math.PI * 1.6 + 0.8) * 0.3) +
-        smoothMouseX * 40;
+        W * (0.82 - Math.sin(smoothScroll * Math.PI * 2.3 + 0.9) * 0.36) +
+        smoothMouseX * 50;
       const orb2Y =
-        H * (0.76 - Math.cos(smoothScroll * Math.PI * 1.3 + t * 0.2) * 0.28) +
-        smoothMouseY * 30;
-      const r2 = Math.max(W, H) * 0.5;
+        H * (0.76 - Math.cos(smoothScroll * Math.PI * 1.8 + t * 0.25) * 0.32) +
+        smoothMouseY * 35;
+      const r2 = Math.max(W, H) * 0.56;
       const g2 = ctx.createRadialGradient(orb2X, orb2Y, 0, orb2X, orb2Y, r2);
-      g2.addColorStop(0, rgb(pal.orb2, 0.5));
-      g2.addColorStop(0.55, rgb(pal.orb2, 0.15));
+      g2.addColorStop(0, rgb(pal.orb2, 0.54));
+      g2.addColorStop(0.5, rgb(pal.orb2, 0.18));
       g2.addColorStop(1, rgb(pal.orb2, 0));
       ctx.fillStyle = g2;
       ctx.fillRect(0, 0, W, H);
 
-      // Subtle 3D perspective silk ribbon arcs driven by scroll depth
+      // 3. 3D perspective camera parameters
+      const focal = Math.min(W, H) * 0.92;
+      const camYaw =
+        smoothMouseX * 0.18 + Math.sin(smoothScroll * Math.PI * 2.2) * 0.34;
+      const camPitch =
+        smoothMouseY * 0.12 + (smoothScroll - 0.5) * 0.42;
+      const zTravel = smoothScroll * 1650 + t * 18;
+
+      // 4. 3D Horizon Perspective Grid flying forward on scroll
+      draw3DHorizonGrid(pal, smoothScroll, camPitch, camYaw);
+
+      // 5. Flowing 3D silk ribbons
       ctx.save();
-      ctx.strokeStyle = rgb(pal.gold, 0.13);
-      ctx.lineWidth = 1.25;
+      ctx.strokeStyle = rgb(pal.gold, 0.24);
+      ctx.lineWidth = 1.6;
       for (let r = 0; r < 3; r++) {
         const arcY =
-          H * (0.25 + r * 0.28) +
-          Math.sin(smoothScroll * Math.PI * 2 + r * 1.3) * 75;
+          H * (0.2 + r * 0.3) +
+          Math.sin(smoothScroll * Math.PI * 3 + r * 1.4 + t * 0.5) * 95;
         ctx.beginPath();
         ctx.moveTo(-40, arcY);
         ctx.bezierCurveTo(
           W * 0.3,
-          arcY - 120 * Math.cos(smoothScroll * 4 + r),
+          arcY - 145 * Math.cos(smoothScroll * 5 + r),
           W * 0.7,
-          arcY + 120 * Math.sin(smoothScroll * 4 + r),
+          arcY + 145 * Math.sin(smoothScroll * 5 + r),
           W + 40,
-          arcY - 40
+          arcY - 35
         );
         ctx.stroke();
       }
       ctx.restore();
 
-      // 3D camera transform driven by scroll progress + pointer
-      const focal = Math.min(W, H) * 0.92;
-      const camYaw = smoothMouseX * 0.16 + Math.sin(smoothScroll * Math.PI * 2) * 0.22;
-      const camPitch = smoothMouseY * 0.11 + (smoothScroll - 0.5) * 0.32;
-      const zTravel = smoothScroll * 920;
-
-      // Sort 3D objects back-to-front by wrapped camera Z
+      // 6. Depth-sorted 3D Objects (Crystals, 18K Gold Rings, Dew Pearls)
       const renderList = [];
       for (let i = 0; i < objects.length; i++) {
         const obj = objects[i];
-        let z = ((obj.z - zTravel) % 960 + 960) % 960 + 140;
+        const z = (((obj.z - zTravel) % 980) + 980) % 980 + 130;
         let ox = obj.x;
-        let oy = obj.y - (smoothScroll - 0.5) * 320;
+        let oy = obj.y - (smoothScroll - 0.5) * 420;
         if (obj.type === "pearl") {
-          oy += Math.sin(t + obj.phase) * 18;
-          ox += Math.cos(t * 0.7 + obj.phase) * 14;
+          oy += Math.sin(t * 1.2 + obj.phase) * 20;
+          ox += Math.cos(t * 0.8 + obj.phase) * 16;
         }
-        // Apply global camera orbit rotation around scene center
         const camPos = rotate3D([ox, oy, z - 520], camPitch, camYaw, 0);
         const worldZ = camPos[2] + 580;
-        if (worldZ < 90) continue;
+        if (worldZ < 85) continue;
         renderList.push({ obj, wx: camPos[0], wy: camPos[1], wz: worldZ });
       }
       renderList.sort((a, b) => b.wz - a.wz);
@@ -344,13 +418,10 @@
         const scale = focal / wz;
         const sx = W * 0.5 + wx * scale;
         const sy = H * 0.5 + wy * scale;
-        const depthAlpha = Math.max(
-          0.08,
-          Math.min(0.85, 1.15 - wz / 1050)
-        );
+        const depthAlpha = Math.max(0.12, Math.min(0.92, 1.2 - wz / 1020));
 
         if (obj.type === "pearl") {
-          const rad = Math.max(2, obj.size * scale);
+          const rad = Math.max(3, obj.size * scale);
           const col = pal[obj.tone];
           const pg = ctx.createRadialGradient(
             sx - rad * 0.32,
@@ -360,18 +431,25 @@
             sy,
             rad
           );
-          pg.addColorStop(0, `rgba(255,255,255,${(depthAlpha * 0.92).toFixed(3)})`);
-          pg.addColorStop(0.45, rgb(col, (depthAlpha * 0.42).toFixed(3)));
+          pg.addColorStop(
+            0,
+            `rgba(255,255,255,${(depthAlpha * 0.96).toFixed(3)})`
+          );
+          pg.addColorStop(0.45, rgb(col, (depthAlpha * 0.58).toFixed(3)));
           pg.addColorStop(1, rgb(col, 0));
           ctx.fillStyle = pg;
           ctx.beginPath();
           ctx.arc(sx, sy, rad, 0, Math.PI * 2);
           ctx.fill();
         } else if (obj.type === "ring") {
-          const rx = obj.rx + t * obj.vrx * 28 + smoothScroll * 3.4 + scrollVelocity * 6;
-          const ry = obj.ry + t * obj.vry * 28 + smoothScroll * 4.2;
-          const rz = obj.rz + smoothScroll * 1.8;
-          const segs = 36;
+          const rx =
+            obj.rx +
+            t * obj.vrx * 32 +
+            smoothScroll * 5.2 +
+            scrollVelocity * 8;
+          const ry = obj.ry + t * obj.vry * 32 + smoothScroll * 6.4;
+          const rz = obj.rz + smoothScroll * 2.6;
+          const segs = 38;
           const col = pal[obj.tone];
           ctx.save();
           ctx.beginPath();
@@ -390,19 +468,22 @@
             else ctx.lineTo(px, py);
           }
           ctx.closePath();
-          ctx.strokeStyle = rgb(col, (depthAlpha * 0.58).toFixed(3));
-          ctx.lineWidth = Math.max(1.5, 3.8 * scale);
+          ctx.strokeStyle = rgb(col, (depthAlpha * 0.68).toFixed(3));
+          ctx.lineWidth = Math.max(2, 4.6 * scale);
           ctx.stroke();
 
-          // Inner specular gold highlight ring
-          ctx.strokeStyle = `rgba(255,252,246,${(depthAlpha * 0.62).toFixed(3)})`;
-          ctx.lineWidth = Math.max(0.7, 1.3 * scale);
+          ctx.strokeStyle = `rgba(255,253,248,${(depthAlpha * 0.72).toFixed(3)})`;
+          ctx.lineWidth = Math.max(0.8, 1.5 * scale);
           ctx.stroke();
           ctx.restore();
         } else if (obj.type === "gem") {
-          const rx = obj.rx + t * obj.vrx * 24 + smoothScroll * 3.8 + scrollVelocity * 7;
-          const ry = obj.ry + t * obj.vry * 24 + smoothScroll * 5.0;
-          const rz = obj.rz + smoothScroll * 2.1;
+          const rx =
+            obj.rx +
+            t * obj.vrx * 28 +
+            smoothScroll * 5.6 +
+            scrollVelocity * 9;
+          const ry = obj.ry + t * obj.vry * 28 + smoothScroll * 7.2;
+          const rz = obj.rz + smoothScroll * 3.0;
           const baseCol = pal[obj.tone];
 
           const transformed = GEM_VERTS.map((v) => {
@@ -437,10 +518,10 @@
             const nx = uy * vz - uz * vy;
             const ny = uz * vx - ux * vz;
             const nz = ux * vy - uy * vx;
-            if (nz >= 0) continue; // back-face cull
+            if (nz >= 0) continue;
             const nLen = Math.hypot(nx, ny, nz) || 1;
             const light = Math.max(
-              0.15,
+              0.12,
               (-nx * 0.45 - ny * 0.55 - nz * 0.7) / nLen
             );
             faces.push({
@@ -456,19 +537,19 @@
           for (let f = 0; f < faces.length; f++) {
             const fc = faces[f];
             const lit = [
-              Math.min(255, Math.round(lerp(baseCol[0], 255, fc.light * 0.72))),
-              Math.min(255, Math.round(lerp(baseCol[1], 252, fc.light * 0.72))),
-              Math.min(255, Math.round(lerp(baseCol[2], 248, fc.light * 0.72))),
+              Math.min(255, Math.round(lerp(baseCol[0], 255, fc.light * 0.65))),
+              Math.min(255, Math.round(lerp(baseCol[1], 252, fc.light * 0.65))),
+              Math.min(255, Math.round(lerp(baseCol[2], 248, fc.light * 0.65))),
             ];
             ctx.beginPath();
             ctx.moveTo(fc.a.px, fc.a.py);
             ctx.lineTo(fc.b.px, fc.b.py);
             ctx.lineTo(fc.c.px, fc.c.py);
             ctx.closePath();
-            ctx.fillStyle = rgb(lit, (depthAlpha * 0.44).toFixed(3));
+            ctx.fillStyle = rgb(lit, (depthAlpha * 0.54).toFixed(3));
             ctx.fill();
-            ctx.strokeStyle = `rgba(255,255,255,${(depthAlpha * 0.62).toFixed(3)})`;
-            ctx.lineWidth = 1.05;
+            ctx.strokeStyle = `rgba(255,255,255,${(depthAlpha * 0.75).toFixed(3)})`;
+            ctx.lineWidth = 1.15;
             ctx.stroke();
           }
         }
@@ -486,14 +567,14 @@
   }
 
   /* ------------------------------------------------------------------------
-     2. 3D INTERACTIVE CARD TILT & SPECULAR GLARE
+     2. 3D INTERACTIVE CARD TILT & SPECULAR GLARE (Desktop Hover + Touch Press)
      ------------------------------------------------------------------------ */
   if (!prefersReduced && window.matchMedia("(hover: hover)").matches) {
     const tiltEls = document.querySelectorAll(
       ".card-3d, .hero-deck-card, .spotlight-grid, .feature-card"
     );
     tiltEls.forEach((el) => {
-      const maxTilt = el.classList.contains("spotlight-grid") ? 3.2 : 6.5;
+      const maxTilt = el.classList.contains("spotlight-grid") ? 3 : 6.5;
       el.addEventListener("pointermove", (e) => {
         const rect = el.getBoundingClientRect();
         const px = (e.clientX - rect.left) / rect.width;
@@ -515,28 +596,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     3. 3D SCROLL-REVEAL ENTRANCE FOR CARDS
-     ------------------------------------------------------------------------ */
-  const revealEls = document.querySelectorAll(".reveal-3d");
-  if (revealEls.length && "IntersectionObserver" in window && !prefersReduced) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
-    );
-    revealEls.forEach((el) => io.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add("is-visible"));
-  }
-
-  /* ------------------------------------------------------------------------
-     4. INTERACTIVE CATEGORY FILTER & PIN / PHOTO VIEW TOGGLE (1ST-TIMER UX)
+     3. INSTANT CATEGORY FILTER & PIN / PHOTO VIEW TOGGLE
      ------------------------------------------------------------------------ */
   const filterBtns = document.querySelectorAll("[data-filter]");
   const catalogCards = document.querySelectorAll(".card[data-category]");
@@ -557,13 +617,10 @@
             filter === cat ||
             (filter === "under15" && price <= 15.5);
           card.style.display = match ? "" : "none";
-          if (match) {
-            shown++;
-            card.classList.add("is-visible");
-          }
+          if (match) shown++;
         });
         if (countBadge) {
-          countBadge.textContent = `${shown} curated pick${shown === 1 ? "" : "s"}`;
+          countBadge.textContent = `${shown} pick${shown === 1 ? "" : "s"}`;
         }
       });
     });
