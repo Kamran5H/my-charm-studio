@@ -43,7 +43,9 @@ body {
   font-family: var(--font-sans);
   background: transparent;
   color: var(--ink);
-  line-height: 1.55;
+  line-height: 1.62;
+  letter-spacing: 0.012em;
+  word-spacing: 0.1em;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -96,9 +98,10 @@ img {
   color: #F7EFE8;
   text-align: center;
   font-size: 0.72rem;
-  line-height: 1.35;
-  padding: 0.42rem 0.75rem;
-  letter-spacing: 0.015em;
+  line-height: 1.45;
+  padding: 0.44rem 0.75rem;
+  letter-spacing: 0.025em;
+  word-spacing: 0.12em;
 }
 .top-bar strong {
   color: #F5D59B;
@@ -155,6 +158,7 @@ img {
   font-size: 1.38rem;
   font-weight: 700;
   letter-spacing: 0.03em;
+  word-spacing: 0.12em;
   line-height: 1;
 }
 
@@ -234,9 +238,10 @@ img {
   border: 1px solid rgba(193, 78, 103, 0.24);
   font-size: 0.66rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.11em;
+  word-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 0.32rem 0.82rem;
+  padding: 0.32rem 0.85rem;
   border-radius: 999px;
   margin-bottom: 0.65rem;
   box-shadow: 0 4px 12px rgba(193, 78, 103, 0.08);
@@ -251,17 +256,21 @@ h1, h2, h3 {
   font-family: var(--font-serif);
   font-weight: 700;
   color: var(--ink);
-  letter-spacing: -0.015em;
+  letter-spacing: 0.01em;
+  word-spacing: 0.15em;
 }
 
 .hero h1 {
   font-size: clamp(1.85rem, 7vw, 3.15rem);
-  line-height: 1.08;
-  margin-bottom: 0.55rem;
+  line-height: 1.12;
+  margin-bottom: 0.6rem;
 }
 
 .gradient-italic {
   font-style: italic;
+  display: inline-block;
+  padding: 0 0.08em;
+  word-spacing: 0.16em;
   background: linear-gradient(125deg, var(--rose), var(--gold));
   -webkit-background-clip: text;
   background-clip: text;
@@ -532,12 +541,14 @@ h1, h2, h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.3rem;
+  gap: 0.32rem;
   min-height: 42px;
   padding: 0.58rem 1.05rem;
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.82rem;
+  letter-spacing: 0.018em;
+  word-spacing: 0.1em;
   text-decoration: none;
   text-align: center;
   border: 1px solid transparent;
@@ -780,8 +791,10 @@ h1, h2, h3 {
   font-family: var(--font-serif);
   font-size: 0.96rem;
   font-weight: 700;
-  line-height: 1.18;
-  margin-bottom: 0.24rem;
+  line-height: 1.24;
+  letter-spacing: 0.01em;
+  word-spacing: 0.14em;
+  margin-bottom: 0.28rem;
 }
 
 .card-title-link {
@@ -795,8 +808,10 @@ h1, h2, h3 {
 
 .card-caption {
   color: var(--muted);
-  font-size: 0.73rem;
-  line-height: 1.42;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  letter-spacing: 0.012em;
+  word-spacing: 0.1em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
