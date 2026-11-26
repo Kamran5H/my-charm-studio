@@ -650,4 +650,47 @@
       });
     });
   }
+
+  /* ------------------------------------------------------------------------
+     4. VIDEO REELS SOUND TOGGLE & PRODUCT SPOTLIGHT REEL/PIN MEDIA SWITCHER
+     ------------------------------------------------------------------------ */
+  document.querySelectorAll(".reel-sound-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const wrap = btn.closest(".reel-media, .spotlight-media");
+      const vid = wrap ? wrap.querySelector("video") : null;
+      if (!vid) return;
+      vid.muted = !vid.muted;
+      if (!vid.muted) {
+        vid.play().catch(() => {});
+      }
+      btn.textContent = vid.muted ? "🔇 Sound" : "🔊 Sound On";
+    });
+  });
+
+  document.querySelectorAll(".spotlight-media-tabs").forEach((tabGroup) => {
+    const mediaBox = tabGroup.closest(".spotlight-media");
+    const vid = mediaBox ? mediaBox.querySelector("video") : null;
+    const img = mediaBox ? mediaBox.querySelector("img") : null;
+    const soundBtn = mediaBox ? mediaBox.querySelector(".reel-sound-btn") : null;
+    tabGroup.querySelectorAll(".media-tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-media-tab");
+        tabGroup.querySelectorAll(".media-tab-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        if (target === "reel" && vid && img) {
+          vid.style.display = "block";
+          img.style.display = "none";
+          if (soundBtn) soundBtn.style.display = "";
+          vid.play().catch(() => {});
+        } else if (vid && img) {
+          vid.pause();
+          vid.style.display = "none";
+          img.style.display = "block";
+          if (soundBtn) soundBtn.style.display = "none";
+        }
+      });
+    });
+  });
 })();
