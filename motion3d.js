@@ -611,10 +611,12 @@
         let shown = 0;
         catalogCards.forEach((card) => {
           const cat = card.getAttribute("data-category");
+          const isGift = card.getAttribute("data-gift") === "1";
           const price = parseFloat(card.getAttribute("data-price") || "99");
           const match =
             filter === "all" ||
             filter === cat ||
+            (filter === "gifts" && (cat === "gifts" || isGift)) ||
             (filter === "under15" && price <= 15.5);
           card.style.display = match ? "" : "none";
           if (match) shown++;
